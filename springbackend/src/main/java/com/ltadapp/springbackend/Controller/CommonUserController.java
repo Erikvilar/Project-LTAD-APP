@@ -29,7 +29,7 @@ public class CommonUserController {
     @GetMapping
     public ResponseEntity<List<CommonUser>> getAllUsers () {
         
-        return new ResponseEntity<>(commonUserRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(commonUserRepository.findAll(),  HttpStatus.OK);
     }
     @PostMapping
     public CommonUser insertUser (@RequestBody CommonUser user) {
