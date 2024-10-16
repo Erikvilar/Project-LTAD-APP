@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ltadapp.springbackend.model.CommonUser;
 import com.ltadapp.springbackend.repository.CommonUserRepository;
+import com.ltadapp.springbackend.service.CommonUserService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/login")
 @CrossOrigin(origins = "*")
 public class CommonUserController {
     @Autowired
     private CommonUserRepository commonUserRepository;
+    @Autowired
+    private CommonUserService commonUserService;
 
    
     @GetMapping
@@ -32,8 +35,8 @@ public class CommonUserController {
         return new ResponseEntity<>(commonUserRepository.findAll(),  HttpStatus.OK);
     }
     @PostMapping
-    public CommonUser insertUser (@RequestBody CommonUser user) {
-        return commonUserRepository.save(user);
+    public ResponseEntity<String> postMethodEntity (@RequestBody CommonUser user) {
+        return commonUserService.insertAndVerifyExists(user);
 
     }
     

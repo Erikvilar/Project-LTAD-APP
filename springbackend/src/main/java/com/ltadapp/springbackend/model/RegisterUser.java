@@ -8,14 +8,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "CredentialsUser")
+@Document(collection  = "registerUsers")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CredentialUser {
+
+public class RegisterUser {
     @Id
-    private ObjectId credentialUserID;
-    private String nameAndLastName;
-    private String password;
-    
+    private ObjectId id;
+    private String name;
+    private String registerHour;
+    private String local;
 }
