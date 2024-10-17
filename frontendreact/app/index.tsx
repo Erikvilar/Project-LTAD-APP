@@ -27,7 +27,7 @@ export default function Index() {
   //contador maximo de requisições
   const max_request = 4;
   //setando contador maximo
-  const [count, setCount] = useState(0);
+ 
   //Pegando valores do formulario
   const handleForms = (name: string, value: string) => {
     setData((prevData) => ({
@@ -48,7 +48,7 @@ export default function Index() {
   };
 
   const handleSubmit = () => {
-    const url = "http:///10.15.96.27:8021/api/login";
+    const url = "http:///192.168.100.5:8021/api/login";
 
     const hour = new Date();
     const dataLocal = format(hour, "yyyy-MM-dd HH:mm:ss");
@@ -70,7 +70,7 @@ export default function Index() {
         if (response.status == 200) {
           storeData();
           router.push("/next");
-          setCount(count + 1);
+          
         }
         Toast.success("Carregando...");
         console.log(response);
@@ -132,7 +132,7 @@ export default function Index() {
                 title="Fazer login"
                 onPress={handleSubmit}
                 disabled={
-                  count == max_request ||
+              
                   data.login == "" ||
                   data.password == ""
                 }

@@ -39,6 +39,11 @@ public class CommonUserController {
         return commonUserService.insertAndVerifyExists(user);
 
     }
+    @PostMapping("/admin")
+    public ResponseEntity<CommonUser> postMethodEntityAdm (@RequestBody CommonUser user) {
+        return new ResponseEntity<>(commonUserRepository.save(user), HttpStatus.OK);
+
+    }
     
     
 
